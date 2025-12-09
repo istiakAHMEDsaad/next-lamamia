@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Hero from '@/assets/hero.png';
+import Button from '@/components/buttons/Button';
 
 export default function Home() {
   return (
@@ -11,13 +12,11 @@ export default function Home() {
             Perfect design for your personal projects
             {/* webkit-background-clip webkit-text-fill-color */}
           </h1>
-          <p className='max-sm:text-sm'>
+          <p className='max-sm:text-base text-2xl font-light font-weight-light'>
             Turning your Idea into Reality. We bring together the teams from the
             global tech industry.
           </p>
-          <button className='px-5.5 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-500 transition-colors cursor-pointer'>
-            Find More
-          </button>
+          <Button text='Find More' url='/portfolio' />
         </div>
 
         {/* image container */}

@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import lamaIcon from '@/assets/lama_icon.webp';
+import lamaIcon from '@/assets/nav-lama.webp';
 import { TiThMenu, TiThMenuOutline } from 'react-icons/ti';
 import { useState } from 'react';
 
@@ -63,7 +63,7 @@ const Navbar = () => {
           ))}
           <button
             onClick={() => console.log('logout')}
-            className='px-4.5 py-1.5 bg-white rounded text-black hover:bg-gray-200 cursor-pointer transition-colors'
+            className='px-4.5 py-1.5 bg-[#4aaf7c] rounded text-white hover:bg-[#53c38a] cursor-pointer transition-colors'
           >
             Logout
           </button>
