@@ -3,22 +3,31 @@ import Hero from '@/assets/hero.png';
 
 export default function Home() {
   return (
-    <div>
-      {/* text */}
-      <div>
-        <h1>Perfect design for your personal projects</h1>
-        <p>
-          Turning your Idea into Reality. We bring together the teams from the
-          global tech industry.
-        </p>
-        <button className='px-5.5 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-500 transition-colors cursor-pointer'>
-          Find More
-        </button>
-      </div>
+    <div className='container mx-auto'>
+      <div className='flex max-sm:flex-col md:flex-row items-center justify-center'>
+        {/* text */}
+        <div className='flex-1 flex flex-col gap-8'>
+          <h1 className='text-4xl font-bold md:text-7xl bg-linear-to-b from-emerald-900 to-gray-200 top-to-bottom-gradient'>
+            Perfect design for your personal projects
+            {/* webkit-background-clip webkit-text-fill-color */}
+          </h1>
+          <p className='max-sm:text-sm'>
+            Turning your Idea into Reality. We bring together the teams from the
+            global tech industry.
+          </p>
+          <button className='px-5.5 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-500 transition-colors cursor-pointer'>
+            Find More
+          </button>
+        </div>
 
-      {/* image container */}
-      <div>
-        <Image src={Hero} alt='hero image' />
+        {/* image container */}
+        <div className='flex-1 max-sm:w-full'>
+          <Image
+            src={Hero}
+            alt='hero image'
+            className='h-[500px] object-contain'
+          />
+        </div>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={`${geistMono.variable} antialiased`}>
-        <div className='max-w-[1366px] min-h-screen mx-auto px-[60px] flex flex-col justify-between'>
+        <div className='md:max-w-[1366px] md:min-h-screen md:mx-auto md:px-[60px] md:flex md:flex-col md:justify-between'>
           <Navbar />
           {children}
           <Footer />
