@@ -24,7 +24,8 @@ export default function Home() {
           <Image
             src={Hero}
             alt='hero image'
-            className='h-[500px] object-contain'
+            className='h-[500px] object-contain image-animation2'
+            placeholder='blur'
           />
         </div>
       </div>

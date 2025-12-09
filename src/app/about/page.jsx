@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const About = () => {
   return (
-    <div>
+    <div className='mb-10'>
       {/* image container */}
       <div className='w-full h-[300px] relative mb-12'>
         <Image

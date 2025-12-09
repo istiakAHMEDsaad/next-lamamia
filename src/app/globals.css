@@ -38,3 +38,31 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   font-weight: 300;
 }
+
+.image-animation1 {
+  animation: move 3s infinite ease alternate;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-15px);
+  }
+
+  to {
+    transform: translateY(0px) scale(1.03);
+  }
+}
+
+.image-animation2 {
+  animation: move 3s infinite ease alternate;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(10px);
+  }
+}
