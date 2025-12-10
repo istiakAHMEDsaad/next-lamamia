@@ -24,41 +24,45 @@ const About = () => {
       {/* text container */}
       <div className='flex max-sm:flex-col gap-24'>
         {/* left section */}
-        <div className='flex-1 flex flex-col gap-7'>
-          <h1 className='md:text-4xl font-bold text-3xl'>Who Are We?</h1>
-          <p className='text-[18px] text-justify font-weight-light'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            quae dolor, optio voluptatibus magnam iure esse tempora beatae. A
-            suscipit eos. Animi quibusdam cum omnis officiis voluptatum quo ea
-            eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Ducimus quae dolor, optio voluptatibus magnam iure esse tempora
-            beatae, a suscipit eos. Animi quibusdam cum omnis officiis
-            <br />
-            <br />
-            voluptatum quo ea eveniet? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ducimus quae dolor, optio voluptatibus magnam iure
-            esse tempora beatae, a suscipit eos. Animi quibusdam cum omnis
-            officiis voluptatum quo ea eveniet?
-          </p>
+        <div className='flex-1'>
+          <div className='flex flex-col gap-7'>
+            <h1 className='md:text-4xl font-bold text-3xl'>Who Are We?</h1>
+            <p className='text-[18px] text-justify font-weight-light'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+              quae dolor, optio voluptatibus magnam iure esse tempora beatae. A
+              suscipit eos. Animi quibusdam cum omnis officiis voluptatum quo ea
+              eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ducimus quae dolor, optio voluptatibus magnam iure esse tempora
+              beatae, a suscipit eos. Animi quibusdam cum omnis officiis
+              <br />
+              <br />
+              voluptatum quo ea eveniet? Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Ducimus quae dolor, optio voluptatibus magnam
+              iure esse tempora beatae, a suscipit eos. Animi quibusdam cum
+              omnis officiis voluptatum quo ea eveniet?
+            </p>
+          </div>
         </div>
 
         {/* right section */}
-        <div className='flex-1 flex flex-col gap-7'>
-          <h1 className='md:text-4xl font-bold text-3xl'>What We Do?</h1>
-          <p className='text-[18px] text-justify font-weight-light'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            quae dolor, optio voluptatibus magnam iure esse tempora beatae, a
-            suscipit eos. Animi quibusdam cum omnis officiis voluptatum quo ea
-            eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit. -
-            Creative Illustrations
-            <br />
-            <br /> - Dynamic Websites
-            <br />
-            <br /> - Fast and Handy
-            <br />
-            <br /> - Mobile Apps
-          </p>
-          <Button text='Contact' url='/contact' />
+        <div className='flex-1'>
+          <div className='flex flex-col gap-7'>
+            <h1 className='md:text-4xl font-bold text-3xl'>What We Do?</h1>
+            <p className='text-[18px] text-justify font-weight-light'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+              quae dolor, optio voluptatibus magnam iure esse tempora beatae, a
+              suscipit eos. Animi quibusdam cum omnis officiis voluptatum quo ea
+              eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              - Creative Illustrations
+              <br />
+              <br /> - Dynamic Websites
+              <br />
+              <br /> - Fast and Handy
+              <br />
+              <br /> - Mobile Apps
+            </p>
+            <Button text='Contact' url='/contact' />
+          </div>
         </div>
       </div>
     </div>

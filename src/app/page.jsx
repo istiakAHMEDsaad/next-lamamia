@@ -5,28 +5,33 @@ import Button from '@/components/buttons/Button';
 export default function Home() {
   return (
     <div className='container mx-auto'>
-      <div className='flex max-sm:flex-col md:flex-row items-center justify-center'>
+      <div className='flex max-sm:flex-col-reverse md:flex-row items-center justify-center'>
         {/* text */}
-        <div className='flex-1 flex flex-col gap-8'>
-          <h1 className='text-4xl font-bold md:text-7xl bg-linear-to-b from-emerald-900 to-gray-200 top-to-bottom-gradient'>
-            Perfect design for your personal projects
-            {/* webkit-background-clip webkit-text-fill-color */}
-          </h1>
-          <p className='max-sm:text-base text-2xl font-light font-weight-light'>
-            Turning your Idea into Reality. We bring together the teams from the
-            global tech industry.
-          </p>
-          <Button text='Find More' url='/portfolio' />
+        <div className='flex-1'>
+          <div className='flex flex-col gap-8'>
+            <h1 className='text-4xl font-bold md:text-7xl bg-linear-to-b from-emerald-900 to-gray-200 top-to-bottom-gradient'>
+              Perfect design for your personal projects
+              {/* webkit-background-clip webkit-text-fill-color */}
+            </h1>
+            <p className='max-sm:text-base text-2xl font-light font-weight-light'>
+              Turning your Idea into Reality. We bring together the teams from
+              the global tech industry.
+            </p>
+            <Button text='Find More' url='/portfolio' />
+          </div>
         </div>
 
         {/* image container */}
-        <div className='flex-1 max-sm:w-full'>
-          <Image
-            src={Hero}
-            alt='hero image'
-            className='h-[500px] object-contain image-animation2'
-            placeholder='blur'
-          />
+        <div className='flex-1'>
+          <div className='h-[500px] max-sm:w-72 relative'>
+            <Image
+              src={Hero}
+              alt='hero image'
+              fill={true}
+              className='object-contain image-animation2'
+              placeholder='blur'
+            />
+          </div>
         </div>
       </div>
     </div>
