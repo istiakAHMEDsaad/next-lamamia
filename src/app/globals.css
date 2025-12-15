@@ -66,3 +66,18 @@ body {
     transform: translateY(10px);
   }
 }
+
+/* dark & light mode */
+.light {
+  background-color: white;
+  color: #111;
+}
+
+.dark {
+  background-color: #111;
+  color: #bbb;
+}
+
+.theme {
+  transition: 1s all ease;
+}
