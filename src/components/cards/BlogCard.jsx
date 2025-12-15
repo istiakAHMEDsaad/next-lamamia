@@ -4,7 +4,7 @@ import Image from 'next/image';
 const BlogCard = ({ imgSrc, titleBlog, descBlog }) => {
   return (
     <>
-      <Link href='#'>
+      <Link href='/blog/testId'>
         <div className='flex flex-col lg:flex-row justify-between max-sm:items-center max-sm:gap-4'>
           {/* left image */}
           <div className='lg:basis-[40%] max-md:flex-1'>
