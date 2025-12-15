@@ -6,6 +6,7 @@ import Image from 'next/image';
 import lamaIcon from '@/assets/nav-lama.webp';
 import { TiThMenu, TiThMenuOutline } from 'react-icons/ti';
 import { useState } from 'react';
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +57,7 @@ const Navbar = () => {
 
         {/* medium */}
         <div className='flex items-center gap-5 max-sm:hidden'>
+          <DarkModeToggle />
           {links.map((item) => (
             <Link key={item.id} href={item.url}>
               {item.title}
