@@ -22,7 +22,19 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'via.placeholder.com',
+        hostname: 'picsum.photos',
+        port: '',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'th.wallhaven.cc',
+        port: '',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'w.wallhaven.cc',
         port: '',
         pathname: '**',
       },

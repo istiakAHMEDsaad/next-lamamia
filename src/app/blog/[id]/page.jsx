@@ -1,6 +1,21 @@
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
-const BlogPost = () => {
+async function getDataById(id) {
+  const res = await fetch(`https://wallhaven.cc/api/v1/w/${id}`);
+
+  if (!res.ok) {
+    // throw new Error('Failed to fetch data');
+    return notFound();
+  }
+
+  return res.json();
+}
+
+const BlogPost = async ({ params }) => {
+  const { data } = await getDataById(params.id);
+  console.log(data);
+
   return (
     <div className='space-y-16'>
       {/* top section */}
@@ -41,11 +56,17 @@ const BlogPost = () => {
         <div className='flex-1'>
           <div className='relative h-[350px] w-full'>
             <Image
-              src='https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+              src={data.path}
               fill
               alt='smily avatar'
               className='object-cover rounded'
             />
+            {/* <Image
+              src='https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+              fill
+              alt='smily avatar'
+              className='object-cover rounded'
+            /> */}
           </div>
         </div>
       </div>

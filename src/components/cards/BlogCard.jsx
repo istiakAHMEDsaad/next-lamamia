@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-const BlogCard = ({ imgSrc, titleBlog, descBlog }) => {
+const BlogCard = ({ imgSrc, titleBlog, descBlog, objectFit, apiId }) => {
   return (
     <>
-      <Link href='/blog/testId'>
+      <Link href={`/blog/${apiId}`}>
         <div className='flex flex-col lg:flex-row justify-between max-sm:items-center max-sm:gap-4'>
           {/* left image */}
           <div className='lg:basis-[40%] max-md:flex-1'>
@@ -13,7 +13,7 @@ const BlogCard = ({ imgSrc, titleBlog, descBlog }) => {
                 src={imgSrc}
                 fill
                 alt='image'
-                className='object-cover rounded'
+                className={`${objectFit} rounded`}
               />
             </div>
           </div>
