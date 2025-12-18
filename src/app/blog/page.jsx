@@ -14,7 +14,7 @@ async function getData() {
 
 const Blog = async () => {
   const data = await getData();
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className='flex flex-col space-y-16'>
