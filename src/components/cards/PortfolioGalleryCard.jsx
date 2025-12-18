@@ -1,22 +1,19 @@
 import Image from 'next/image';
 import Button from '../buttons/Button';
 
-const PortfolioGalleryCard = ({ reverseClass, imgSrc }) => {
+const PortfolioGalleryCard = ({ reverseClass, title, desc, imgSrc }) => {
+  const isEven = reverseClass % 2 === 0;
   return (
     <div
-      className={`flex md:${reverseClass} max-sm:flex-col-reverse gap-12 mt-12 mb-24 items-center`}
+      className={`flex ${
+        isEven ? 'flex-row-reverse' : 'flex-row'
+      } max-sm:flex-col-reverse gap-12 mt-12 mb-24 items-center`}
     >
       {/* left text section */}
       <div className='flex-1'>
         <div className='flex flex-col gap-5'>
-          <h1 className='max-sm:text-4xl text-5xl font-semibold'>
-            Creative Portfolio
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            accusantium placeat molestiae tenetur voluptatem? Totam explicabo
-            necessitatibus magnam architecto alias!
-          </p>
+          <h1 className='max-sm:text-4xl text-5xl font-semibold'>{title}</h1>
+          <p>{desc}</p>
           <Button text='See More' url='#' />
         </div>
       </div>
