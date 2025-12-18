@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 async function getDataById(id) {
-  const res = await fetch(`https://wallhaven.cc/api/v1/w/${id}`);
+  // const res = await fetch(`https://wallhaven.cc/api/v1/w/${id}`);
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`);
 
   if (!res.ok) {
     // throw new Error('Failed to fetch data');

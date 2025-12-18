@@ -2,7 +2,7 @@
 
 import { Sun, Moon } from 'lucide-react';
 import { useContext } from 'react';
-import { ThemeContext } from '../../../context/ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const DarkModeToggle = () => {
   const { toggle, mode } = useContext(ThemeContext);

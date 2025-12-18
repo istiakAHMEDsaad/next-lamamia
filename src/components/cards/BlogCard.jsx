@@ -23,7 +23,8 @@ const BlogCard = ({ imgSrc, titleBlog, descBlog, objectFit, apiId }) => {
             <div className='flex flex-col gap-5'>
               <h1 className='text-3xl font-semibold'>{titleBlog}</h1>
 
-              <p>{descBlog.slice(0, 15)}</p>
+              {/* <p>{descBlog.slice(0, 15)}</p> */}
+              <p>{descBlog}</p>
             </div>
           </div>
         </div>
