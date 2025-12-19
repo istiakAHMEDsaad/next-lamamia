@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import { ThemeProvider } from '@/context/ThemeContext';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -22,7 +23,8 @@ const poppins = Poppins({
 
 export const metadata = {
   title: 'Lamamia Home',
-  description: 'Lamamia application created by the robust nextjs with rest api.',
+  description:
+    'Lamamia application created by the robust nextjs with rest api.',
 };
 
 export default function RootLayout({ children }) {
@@ -32,11 +34,13 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         <ThemeProvider>
-          <div className='md:max-w-[1366px] md:min-h-screen md:mx-auto md:px-[60px] md:flex md:flex-col md:justify-between'>
-            <Navbar />
-            {children}
-            <Footer />
-          </div>
+          <AuthProvider>
+            <div className='md:max-w-[1366px] md:min-h-screen md:mx-auto md:px-[60px] md:flex md:flex-col md:justify-between'>
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

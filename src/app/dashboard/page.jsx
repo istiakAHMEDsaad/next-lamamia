@@ -1,6 +1,7 @@
 'use client';
 
 import LoaderSpinner from '@/components/loader/LoaderSpinner';
+import { useSession } from 'next-auth/react';
 import useSWR from 'swr';
 
 const Dashboard = () => {
@@ -9,6 +10,9 @@ const Dashboard = () => {
     'https://jsonplaceholder.typicode.com/posts',
     fetcher
   );
+
+  const session = useSession();
+  console.log(session);
 
   return (
     <div>

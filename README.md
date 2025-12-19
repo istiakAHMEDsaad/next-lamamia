@@ -1,3 +1,12 @@
+### generate secret key:
+```
+openssl rand -base64 32
+```
+on node:
+```
+require('crypto').randomBytes(64).toString('hex')
+```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
