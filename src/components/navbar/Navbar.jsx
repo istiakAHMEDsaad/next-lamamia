@@ -8,9 +8,13 @@ import { TiThMenu, TiThMenuOutline } from 'react-icons/ti';
 import { useState } from 'react';
 import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const router = useRouter();
 
   const links = [
     {
@@ -45,8 +49,14 @@ const Navbar = () => {
     },
   ];
 
-  const handleLogout = () => {
-    signOut({callbackUrl: '/'});
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+
+    toast.success('Logout Successful!');
+
+    setTimeout(() => {
+      router.push('/');
+    }, 800);
   };
 
   return (

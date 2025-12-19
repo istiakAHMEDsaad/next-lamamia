@@ -4,9 +4,13 @@ import { useContext } from 'react';
 import React from 'react';
 import { signIn } from 'next-auth/react';
 import { ThemeContext } from '@/context/ThemeContext';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const { mode } = useContext(ThemeContext);
+
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,7 +19,23 @@ const Login = () => {
     const email = formData.get('email');
     const password = formData.get('password');
 
-    signIn('credentials', { email, password, callbackUrl: '/dashboard' });
+    const res = await signIn('credentials', {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (res?.error) {
+      toast.error('Invalid email or password!');
+      return;
+    }
+
+    toast.success('Welcome back!');
+
+    setTimeout(() => {
+      router.push('/dashboard');
+    }, 1000);
+    // signIn('credentials', { email, password, callbackUrl: '/dashboard' });
   };
 
   return (

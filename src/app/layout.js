@@ -4,6 +4,8 @@ import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import { ThemeProvider } from '@/context/ThemeContext';
 import AuthProvider from '@/components/AuthProvider/AuthProvider';
+import { ToastContainer, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -35,6 +37,19 @@ export default function RootLayout({ children }) {
       >
         <ThemeProvider>
           <AuthProvider>
+            <ToastContainer
+              position='top-right'
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='colored'
+              transition={Slide}
+            />
             <div className='md:max-w-[1366px] md:min-h-screen md:mx-auto md:px-[60px] md:flex md:flex-col md:justify-between'>
               <Navbar />
               {children}

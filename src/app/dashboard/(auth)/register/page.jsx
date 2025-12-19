@@ -5,6 +5,7 @@ import { ThemeContext } from '@/context/ThemeContext';
 import LoginSVG from '@/assets/Devices-bro.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const { mode } = useContext(ThemeContext);
@@ -31,8 +32,12 @@ const Register = () => {
         body: JSON.stringify(finalData),
       });
 
-      res.status === 201 &&
+      if (res.status === 201) {
+        toast.success('Account has been created');
         router.push('/dashboard/login?success=Account has been created');
+      }
+      // res.status === 201 &&
+      //   router.push('/dashboard/login?success=Account has been created');
     } catch (error) {
       setErr(true);
     }
