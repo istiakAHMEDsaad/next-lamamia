@@ -7,6 +7,7 @@ import lamaIcon from '@/assets/nav-lama.webp';
 import { TiThMenu, TiThMenuOutline } from 'react-icons/ti';
 import { useState } from 'react';
 import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
+import { signOut } from 'next-auth/react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,6 +45,10 @@ const Navbar = () => {
     },
   ];
 
+  const handleLogout = () => {
+    signOut({callbackUrl: '/'});
+  };
+
   return (
     <div className='container mx-auto'>
       <div className='h-24 flex justify-between items-center'>
@@ -64,7 +69,7 @@ const Navbar = () => {
             </Link>
           ))}
           <button
-            onClick={() => console.log('logout')}
+            onClick={handleLogout}
             className='px-4.5 py-1.5 bg-[#4aaf7c] rounded text-white hover:bg-[#53c38a] cursor-pointer transition-colors'
           >
             Logout
@@ -90,6 +95,9 @@ const Navbar = () => {
           >
             {/* menu items */}
             <div className='flex flex-col p-4 gap-3 text-white'>
+              <div className='flex items-center justify-center'>
+                <DarkModeToggle />
+              </div>
               {links.map((item) => (
                 <Link
                   key={item.id}
@@ -103,7 +111,7 @@ const Navbar = () => {
 
               <button
                 className='mt-2 bg-white/80 text-black rounded-md py-1 hover:bg-white transition'
-                onClick={() => console.log('logout')}
+                onClick={handleLogout}
               >
                 Logout
               </button>

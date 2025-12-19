@@ -23,7 +23,7 @@ export const authOptions = {
         await connect();
 
         try {
-          const user = User.findOne({ email: credentials.email });
+          const user = await User.findOne({ email: credentials.email });
 
           if (user) {
             // check password
@@ -51,6 +51,9 @@ export const authOptions = {
       },
     }),
   ],
+  pages: {
+    error: '/dashboard/login'
+  }
 };
 
 export default NextAuth(authOptions);
