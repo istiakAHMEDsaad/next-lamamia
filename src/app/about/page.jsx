@@ -1,6 +1,11 @@
 import Button from '@/components/buttons/Button';
 import Image from 'next/image';
 
+export const metadata = {
+  title: 'Lamamia About',
+  description: 'This is lamamia about section',
+};
+
 const About = () => {
   return (
     <div className='mb-10'>

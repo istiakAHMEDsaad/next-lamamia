@@ -3,6 +3,11 @@ import imageOne from '@/assets/illustration.png';
 import imageTwo from '@/assets/websites.jpg';
 import imageThree from '@/assets/apps.jpg';
 
+export const metadata = {
+  title: 'Lamamia Portfolio',
+  description: 'This is lamamia portfolio'
+}
+
 const Portfolio = () => {
   const portFolioCategory = [
     {

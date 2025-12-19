@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import contactImage from '@/assets/contact.png';
 
+export const metadata = {
+  title: 'Lamamia Contact',
+  description: 'This is lamamia contact section',
+};
+
 const Contact = () => {
   return (
     <div>

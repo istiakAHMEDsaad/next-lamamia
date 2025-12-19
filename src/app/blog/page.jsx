@@ -1,5 +1,10 @@
 import BlogCard from '@/components/cards/BlogCard';
 
+export const metadata = {
+  title: 'Lamamia Blog',
+  description: 'This is lamamia blog section',
+};
+
 async function getData() {
   const res = await fetch('http://localhost:3000/api/posts', {
     next: { revalidate: 120 },

@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+
 import LoaderSpinner from '@/components/loader/LoaderSpinner';
 import useSWR from 'swr';
 
