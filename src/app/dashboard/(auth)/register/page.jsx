@@ -6,6 +6,7 @@ import LoginSVG from '@/assets/Devices-bro.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 const Register = () => {
   const { mode } = useContext(ThemeContext);
@@ -99,9 +100,12 @@ const Register = () => {
 
               <p className='text-center mt-4'>
                 Already have an account?{' '}
-                <a href='#' className='text-blue-500 underline'>
+                <Link
+                  href='/dashboard/login'
+                  className='text-blue-500 underline'
+                >
                   Log In
-                </a>
+                </Link>
               </p>
             </form>
           </div>

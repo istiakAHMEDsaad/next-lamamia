@@ -5,16 +5,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import lamaIcon from '@/assets/nav-lama.webp';
 import { TiThMenu, TiThMenuOutline } from 'react-icons/ti';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import { ThemeContext } from '@/context/ThemeContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
+  const session = useSession();
+  // unauthenticated
+  const isLogin = session?.status;
+
+  const { mode } = useContext(ThemeContext);
 
   const links = [
     {
@@ -78,12 +84,21 @@ const Navbar = () => {
               {item.title}
             </Link>
           ))}
-          <button
-            onClick={handleLogout}
-            className='px-4.5 py-1.5 bg-[#4aaf7c] rounded text-white hover:bg-[#53c38a] cursor-pointer transition-colors'
-          >
-            Logout
-          </button>
+          {isLogin === 'unauthenticated' ? (
+            <Link
+              href='/dashboard/login'
+              className='px-4.5 py-1.5 bg-[#4aaf7c] rounded text-white hover:bg-[#53c38a] cursor-pointer transition-colors'
+            >
+              Login
+            </Link>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className='px-4.5 py-1.5 bg-[#4aaf7c] rounded text-white hover:bg-[#53c38a] cursor-pointer transition-colors'
+            >
+              Logout
+            </button>
+          )}
         </div>
 
         {/* mobile */}
@@ -94,7 +109,9 @@ const Navbar = () => {
 
           <div
             className={`absolute right-0 top-12 z-50 w-48 rounded-xl
-            bg-white/20 backdrop-blur-xl border border-white/30 shadow-lg
+           ${
+             mode === 'light' ? 'bg-gray-600/80' : 'bg-gray-500/40'
+           } backdrop-blur-xl border border-white/30 shadow-lg
             transition-all duration-300
             ${
               isOpen
@@ -119,12 +136,21 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              <button
-                className='mt-2 bg-white/80 text-black rounded-md py-1 hover:bg-white transition'
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
+              {isLogin === 'unauthenticated' ? (
+                <Link
+                  href='/dashboard/login'
+                  className='text-center mt-2 bg-white/80 text-black rounded-md py-1 hover:bg-white transition'
+                >
+                  Login
+                </Link>
+              ) : (
+                <button
+                  className='mt-2 bg-white/80 text-black rounded-md py-1 hover:bg-white transition'
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </div>

@@ -9,7 +9,9 @@ const DarkModeToggle = () => {
 
   return (
     <div
-      className='w-12 h-6 border-[1.5px] border-gray-500 #53C28B70 rounded-[30px] flex justify-between items-center relative px-0.5 cursor-pointer'
+      className={`w-12 h-6 border-[1.5px] ${
+        mode === 'dark' ? 'border-gray-500' : 'border-white'
+      } #53C28B70 rounded-[30px] flex justify-between items-center relative px-0.5 cursor-pointer`}
       onClick={toggle}
     >
       <div>

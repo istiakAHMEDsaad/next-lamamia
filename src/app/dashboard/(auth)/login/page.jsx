@@ -6,6 +6,8 @@ import { signIn } from 'next-auth/react';
 import { ThemeContext } from '@/context/ThemeContext';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Login = () => {
   const { mode } = useContext(ThemeContext);
@@ -72,16 +74,29 @@ const Login = () => {
         </div>
         <button
           type='submit'
-          className='w-full mb-3 bg-indigo-500 hover:bg-indigo-600/90 active:scale-95 transition py-2.5 rounded-full text-white'
+          className='w-full mb-3 bg-[#4aaf7c] hover:bg-[#53c38a] active:scale-95 transition py-2.5 rounded-full text-white cursor-pointer'
         >
           Log in
         </button>
         <p className='text-center mt-4'>
           Don&apos;t have an account?{' '}
-          <a href='#' className='text-blue-500 underline'>
+          <Link href='/dashboard/register' className='text-blue-500 underline'>
             Signup Now
-          </a>
+          </Link>
         </p>
+        <button
+          type='button'
+          className='w-full flex items-center gap-2 justify-center my-3 bg-white border border-gray-500/30 py-2.5 rounded-full text-gray-800 hover:bg-gray-200/60 transition-colors cursor-pointer'
+          onClick={() => signIn('google')}
+        >
+          <Image
+            height={16}
+            width={16}
+            src='https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleFavicon.png'
+            alt='googleFavicon'
+          />
+          Log in with Google
+        </button>
       </form>
     </div>
   );

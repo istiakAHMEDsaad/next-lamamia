@@ -2,6 +2,7 @@
 
 import LoaderSpinner from '@/components/loader/LoaderSpinner';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
 
 const Dashboard = () => {
@@ -12,29 +13,44 @@ const Dashboard = () => {
   );
 
   const session = useSession();
-  console.log(session);
 
-  return (
-    <div>
-      {isLoading ? (
-        <div className='h-screen flex items-center justify-center'>
-          <LoaderSpinner />
-        </div>
-      ) : (
-        <div className='flex flex-col gap-5'>
-          {data.map((item) => (
-            <div
-              key={item.id}
-              className='w-full h-30 border border-gray-500 rounded-md px-4 py-2'
-            >
-              <p className='text-2xl font-bold'>{item.title}</p>
-              <p className='text-sm text-gray-500'>{item.body}</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  const router = useRouter();
+
+  if (session.status === 'loading') {
+    return (
+      <div className='h-screen flex flex-col items-center justify-center'>
+        <LoaderSpinner />
+      </div>
+    );
+  }
+
+  if (session.status === 'unauthenticated') {
+    router.push('/dashboard/login');
+  }
+
+  if (session.status === 'authenticated') {
+    return (
+      <div>
+        {isLoading ? (
+          <div className='h-screen flex items-center justify-center'>
+            <LoaderSpinner />
+          </div>
+        ) : (
+          <div className='flex flex-col gap-5'>
+            {data.map((item) => (
+              <div
+                key={item.id}
+                className='w-full h-30 border border-gray-500 rounded-md px-4 py-2'
+              >
+                <p className='text-2xl font-bold'>{item.title}</p>
+                <p className='text-sm text-gray-500'>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 };
 
 export default Dashboard;
