@@ -1,19 +1,28 @@
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 import LoginSVG from '@/assets/Devices-bro.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import LoaderSpinner from '@/components/loader/LoaderSpinner';
 
 const Register = () => {
   const { mode } = useContext(ThemeContext);
   //#53c38a
   const [err, setErr] = useState(false);
+  const { status } = useSession();
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.replace('/dashboard');
+    }
+  }, [status, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +52,18 @@ const Register = () => {
       setErr(true);
     }
   };
+
+  if (status === 'loading') {
+    return (
+      <div className='flex items-center justify-center h-screen'>
+        <LoaderSpinner />
+      </div>
+    );
+  }
+
+  if (status === 'authenticated') {
+    return null;
+  }
 
   return (
     <div className='my-10'>

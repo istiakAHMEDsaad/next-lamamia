@@ -56,13 +56,13 @@ const Navbar = () => {
   ];
 
   const handleLogout = async () => {
-    await signOut({ redirect: false });
+    await signOut({ callbackUrl: '/' });
 
-    toast.success('Logout Successful!');
+    // toast.success('Logout Successful!');
 
-    setTimeout(() => {
-      router.push('/');
-    }, 800);
+    // setTimeout(() => {
+    //   router.push('/');
+    // }, 800);
   };
 
   return (
@@ -108,6 +108,7 @@ const Navbar = () => {
           </button>
 
           <div
+            suppressHydrationWarning
             className={`absolute right-0 top-12 z-50 w-48 rounded-xl
            ${
              mode === 'light' ? 'bg-gray-600/80' : 'bg-gray-500/40'

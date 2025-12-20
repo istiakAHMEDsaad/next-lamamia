@@ -3,18 +3,26 @@
 import LoaderSpinner from '@/components/loader/LoaderSpinner';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import useSWR from 'swr';
 
 const Dashboard = () => {
+  // const { data: session, status } = useSession();
+  const session = useSession();
+
+  const router = useRouter();
+
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
     'https://jsonplaceholder.typicode.com/posts',
     fetcher
   );
 
-  const session = useSession();
-
-  const router = useRouter();
+  useEffect(() => {
+    if (session.status === 'unauthenticated') {
+      router.push('/dashboard/login');
+    }
+  }, [session.status, router]);
 
   if (session.status === 'loading') {
     return (
@@ -22,10 +30,6 @@ const Dashboard = () => {
         <LoaderSpinner />
       </div>
     );
-  }
-
-  if (session.status === 'unauthenticated') {
-    router.push('/dashboard/login');
   }
 
   if (session.status === 'authenticated') {
