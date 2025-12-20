@@ -17,7 +17,7 @@ const Login = () => {
   // Redirect authenticated users away from login page
   useEffect(() => {
     if (status === 'authenticated') {
-      router.replace('/dashboard');
+      router.push('/dashboard');
     }
   }, [status, router]);
 
@@ -53,7 +53,6 @@ const Login = () => {
       </div>
     );
   }
-
 
   return (
     <div className='flex items-center justify-center mb-10'>
