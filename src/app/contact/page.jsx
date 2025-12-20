@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import contactImage from '@/assets/contact.png';
+import { toast } from 'react-toastify';
 
 export const metadata = {
   title: 'Lamamia Contact',
@@ -47,7 +48,12 @@ const Contact = () => {
               rows={10}
               placeholder='Message'
             ></textarea>
-            <button>send</button>
+            <button
+              className='bg-[#4aaf7c] hover:bg-[#53c38a] transition-colors py-2 rounded text-white text-[18px] cursor-pointer'
+              type='submit'
+            >
+              Send
+            </button>
           </form>
         </div>
       </div>

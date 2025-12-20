@@ -41,7 +41,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <div>
+    <div className='mb-10'>
       <h1 className='text-3xl font-semibold'>Choose a gallery</h1>
 
       {/* medium */}

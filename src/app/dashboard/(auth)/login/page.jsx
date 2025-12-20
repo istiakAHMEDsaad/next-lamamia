@@ -54,10 +54,6 @@ const Login = () => {
     );
   }
 
-  // Prevent rendering login form while redirecting
-  if (status === 'authenticated') {
-    return null;
-  }
 
   return (
     <div className='flex items-center justify-center mb-10'>

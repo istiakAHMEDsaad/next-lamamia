@@ -4,7 +4,7 @@ import Button from '@/components/buttons/Button';
 
 export default function Home() {
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto mb-10'>
       <div className='flex max-sm:flex-col-reverse md:flex-row items-center justify-center'>
         {/* text */}
         <div className='flex-1'>

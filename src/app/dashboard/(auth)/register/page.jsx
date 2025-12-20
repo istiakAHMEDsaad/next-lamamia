@@ -61,10 +61,6 @@ const Register = () => {
     );
   }
 
-  if (status === 'authenticated') {
-    return null;
-  }
-
   return (
     <div className='my-10'>
       <div className='flex md:flex-row max-sm:flex-col-reverse items-center justify-center'>
