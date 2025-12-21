@@ -6,6 +6,16 @@ This project contain nextjs15 powerful feathers like seo, mutate, ssr etc...
 
 **Live Page: [LINK](#)**
 
+_local environment structure:_
+```
+MONGO_DB=****
+NEXTAUTH_URL=****
+NEXT_PUBLIC_BASE_URL=****
+GOOGLE_CLIENT_ID=****
+GOOGLE_CLIENT_SECRET=****
+NEXTAUTH_SECRET=generate secret key!!!
+```
+
 _Dependencies Used:_
 
 ```
@@ -29,6 +39,7 @@ _Dependencies Used:_
 openssl rand -base64 32
 ```
 
+or</br>
 on node:
 
 ```

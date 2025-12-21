@@ -2,19 +2,8 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 
-// async function getDataById(id) {
-//   const res = await fetch(`http://localhost:3000/api/posts/${id}`);
-
-//   if (!res.ok) {
-//     // throw new Error('Failed to fetch data');
-//     return notFound();
-//   }
-
-//   return res.json();
-// }
-
 const getPost = cache(async (id) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${id}`, {
     cache: 'no-store',
   });
 
@@ -34,7 +23,6 @@ export async function generateMetadata({ params }) {
 
 const BlogPost = async ({ params }) => {
   const data = await getPost(params.id);
-  // console.log(data);
 
   return (
     <div className='space-y-16'>
@@ -84,13 +72,3 @@ const BlogPost = async ({ params }) => {
 };
 
 export default BlogPost;
-
-// const res = await fetch(`https://wallhaven.cc/api/v1/w/${id}`);
-{
-  /* <Image
-              src='https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-              fill
-              alt='smily avatar'
-              className='object-cover rounded'
-            /> */
-}

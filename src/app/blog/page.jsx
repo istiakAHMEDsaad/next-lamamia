@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 async function getData() {
-  const res = await fetch('http://localhost:3000/api/posts', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
     // next: { revalidate: 120 },
     cache: 'no-cache',
   });
@@ -20,7 +20,6 @@ async function getData() {
 
 const Blog = async () => {
   const data = await getData();
-  console.log(data);
 
   return (
     <div className='flex flex-col space-y-16'>

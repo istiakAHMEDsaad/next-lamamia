@@ -14,7 +14,6 @@ const Dashboard = () => {
   // const { data: session, status } = useSession();
   const { mode } = useContext(ThemeContext);
   const session = useSession();
-  // console.log(session);
 
   const router = useRouter();
 
@@ -25,8 +24,6 @@ const Dashboard = () => {
     username ? `/api/posts?username=${username}` : null,
     fetcher
   );
-
-  // console.log(data);
 
   // post the data
   const handeSubmit = async (e) => {
@@ -296,21 +293,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-/*{
-  "_id": {
-    "$oid": "6946eb7578c8218d9a20f1a1"
-  },
-  "title": "woman wearing white shirt",
-  "desc": "woman wearing white shirt walking on water during daytime",
-  "image": "https://images.unsplash.com/photo-1530076886461-ce58ea8abe24?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "content": "Synergistically mesh best-of-breed web services with standards compliant customer service. Assertively simplify backend networks after optimal benefits. ",
-  "username": "Kamal",
-  "createdAt": {
-    "$date": "2025-12-20T18:31:17.373Z"
-  },
-  "updatedAt": {
-    "$date": "2025-12-20T18:31:17.373Z"
-  },
-  "__v": 0
-}*/
