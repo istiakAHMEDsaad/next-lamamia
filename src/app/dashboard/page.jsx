@@ -28,6 +28,7 @@ const Dashboard = () => {
 
   // console.log(data);
 
+  // post the data
   const handeSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -68,6 +69,91 @@ const Dashboard = () => {
     }
   };
 
+  // delete function
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`/api/posts/${id}`, { method: 'DELETE' });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Failed to delete the post');
+      }
+
+      toast.success(data.message || 'Post deleted!');
+      mutate();
+    } catch (error) {
+      toast.error(error.message || 'Something went wrong');
+    }
+  };
+
+  // modal confirm
+  const confirmDelete = (id) => {
+    toast(
+      ({ closeToast }) => (
+        <div className='flex flex-col gap-4 p-1'>
+          <div className='flex items-start gap-4'>
+            {/* Icon with soft pulse/bg effect */}
+            <div className='shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-red-50 border border-red-100'>
+              <svg
+                className='w-5 h-5 text-red-600'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
+                />
+              </svg>
+            </div>
+
+            <div>
+              <h3 className='text-sm font-semibold text-slate-900'>
+                Confirm Deletion
+              </h3>
+              <p className='mt-1 text-xs leading-relaxed text-slate-500'>
+                This action cannot be undone. This post will be permanently
+                removed from our servers.
+              </p>
+            </div>
+          </div>
+
+          {/* Action Buttons with high-quality borders/shadows */}
+          <div className='flex justify-end gap-2 mt-2'>
+            <button
+              onClick={closeToast}
+              className='px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-md hover:bg-slate-50 hover:border-slate-300 transition-all active:scale-95'
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => {
+                handleDelete(id);
+                closeToast();
+              }}
+              className='px-3 py-1.5 text-xs font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 transition-all active:scale-95'
+            >
+              Delete Post
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        position: 'top-right',
+        autoClose: false,
+        closeOnClick: false,
+        closeButton: false,
+        draggable: false,
+        // We remove the default padding/styling of the toast container here
+        className:
+          'border border-slate-200 shadow-2xl rounded-xl !bg-white !p-4',
+      }
+    );
+  };
+
   useEffect(() => {
     if (session.status === 'unauthenticated') {
       router.push('/dashboard/login');
@@ -94,7 +180,7 @@ const Dashboard = () => {
               <LoaderSpinner />
             </div>
           ) : (
-            <div className='flex-1 flex flex-col justify-center gap-3'>
+            <div className='flex-1 flex flex-col justify-center gap-5'>
               {data?.map((item) => (
                 <div
                   className={`border ${
@@ -102,21 +188,28 @@ const Dashboard = () => {
                   } rounded shadow relative p-3`}
                   key={item._id}
                 >
-                  <div className='flex flex-row max-sm:flex-col md:items-center gap-5'>
-                    <div className='relative w-[320px] h-[180px] max-sm:w-[280px] max-sm:h-[157px]'>
-                      <Image
-                        src={item.image}
-                        fill
-                        alt='image'
-                        className='rounded object-cover'
-                      />
+                  <div className='flex flex-row max-sm:flex-col gap-5'>
+                    <div className='flex-1'>
+                      <div className='relative w-[320px] h-[180px] max-sm:w-[280px] max-sm:h-[157px]'>
+                        <Image
+                          src={item.image}
+                          fill
+                          alt='image'
+                          className='rounded object-cover'
+                        />
+                      </div>
                     </div>
-                    <div className='max-sm:ml-2'>
-                      <h2 className='text-3xl font-semibold'>Title</h2>
-                      <p className='text-sm'>This is description</p>
+                    <div className='flex-1'>
+                      <div className='max-sm:ml-2'>
+                        <h2 className='text-2xl font-semibold'>{item.title}</h2>
+                        <p className='text-sm'>{item.desc}</p>
+                      </div>
                     </div>
                   </div>
-                  <div className='absolute top-1 right-1 border border-red-300 rounded-full bg-red-700'>
+                  <div
+                    onClick={() => confirmDelete(item._id)}
+                    className='absolute top-1 right-1 border border-red-300 rounded-full bg-red-700'
+                  >
                     <X color='white' size={18} />
                   </div>
                 </div>
@@ -204,27 +297,20 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-/*const [data, setData] = useState([]);
-  const [err, setErr] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const getData = async () => {
-      setIsLoading(true);
-      const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        next: { revalidate: 120 },
-      });
-
-      if (!res.ok) {
-        setErr(true);
-      }
-
-      const data = await res.json();
-
-      setData(data);
-      setIsLoading(false);
-    };
-
-    getData();
-  }, []);
-  */
+/*{
+  "_id": {
+    "$oid": "6946eb7578c8218d9a20f1a1"
+  },
+  "title": "woman wearing white shirt",
+  "desc": "woman wearing white shirt walking on water during daytime",
+  "image": "https://images.unsplash.com/photo-1530076886461-ce58ea8abe24?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "content": "Synergistically mesh best-of-breed web services with standards compliant customer service. Assertively simplify backend networks after optimal benefits. ",
+  "username": "Kamal",
+  "createdAt": {
+    "$date": "2025-12-20T18:31:17.373Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-20T18:31:17.373Z"
+  },
+  "__v": 0
+}*/
