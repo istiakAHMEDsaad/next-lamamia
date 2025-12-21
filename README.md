@@ -4,7 +4,7 @@ This project contain nextjs15 powerful feathers like seo, mutate, ssr etc...
 
 ![lamamia-screenshot](./lamamia-screenshot.webp)
 
-**Live Page: [LINK](#)**
+**Live Page: [LINK](https://next-lamamia.vercel.app/)**
 
 _local environment structure:_
 ```
